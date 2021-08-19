@@ -29,6 +29,8 @@ Having the wires mapped, solder/connect the wires to the Raspberry Pi Pico like 
 
 ![female connector](nunchuck_port.png)
 
+_[image source](https://en.wikipedia.org/wiki/File:Conectores_nunchuk_wiimote.png) - CC BY-SA 3.0_
+
 ## Software
 - Install Arduino IDE
 - Tools > Board > Board Manager > Install support for the RPi Pico: "Arduino Mbed OS RP2040 Boards"
