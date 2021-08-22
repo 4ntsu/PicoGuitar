@@ -15,7 +15,7 @@ const int WHAMMY_MAX = 29;
 // min/max X/Y joystick axis values as returned by WiiChuck, adjust as needed
 const int STICK_X_MIN = 5;
 const int STICK_X_MAX = 62;
-const int STICK_Y_MIN = 7;
+const int STICK_Y_MIN = 5;
 const int STICK_Y_MAX = 62;
 
 void setup() {  
@@ -29,7 +29,7 @@ void loop() {
   
   guitar.readData(); // read inputs from guitar
 
-  gamepad.SetZ(map(guitar.getWhammyBar(), WHAMMY_MIN, WHAMMY_MAX, ANALOG_MIN, ANALOG_MAX));   // whammy
+  gamepad.SetZ(map(guitar.getWhammyBar(), WHAMMY_MIN, WHAMMY_MAX, 0, ANALOG_MAX));            // whammy
   gamepad.SetButton(1, guitar.getGreenButton());                                              // green
   gamepad.SetButton(2, guitar.getRedButton());                                                // red
   gamepad.SetButton(0, guitar.getYellowButton());                                             // yellow
@@ -37,7 +37,7 @@ void loop() {
   gamepad.SetButton(4, guitar.getOrangeButton());                                             // orange
   gamepad.SetRz(guitar.getStrumUp()?ANALOG_MIN:(guitar.getStrumDown()?ANALOG_MAX:0));         // strum
   gamepad.SetX(map(guitar.getStickXGuitar(),STICK_X_MIN,STICK_X_MAX,ANALOG_MIN,ANALOG_MAX));  // joystick X axis
-  gamepad.SetY(map(guitar.getStickYGuitar(),STICK_Y_MIN,STICK_Y_MAX,ANALOG_MIN,ANALOG_MAX));  // joystick Y axis
+  gamepad.SetY(map(guitar.getStickYGuitar(),STICK_Y_MIN,STICK_Y_MAX,ANALOG_MAX,ANALOG_MIN));  // joystick Y axis
   gamepad.SetButton(8, guitar.getMinusButtonGuitar());                                        // star power
   gamepad.SetButton(9, guitar.getPlusButtonGuitar());                                         // plus buttons
   
