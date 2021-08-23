@@ -1,7 +1,7 @@
 # PicoGuitar
 Small project to interface a Wii Guitar Hero controller to a PC using a Raspberry Pi Pico.
 
-![pictures](PicoGuitar_adapter.jpg | width=600)
+<img src="PicoGuitar_adapter.jpg" alt="Adapter pictures" width="600"/>
 
 ## Disclaimer
 The code in this repository and the guide below are provided without any warranties, so if something goes wrong and you break your guitar, that's entirely on you.
