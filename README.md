@@ -25,8 +25,8 @@ Having the wires mapped, solder/connect the wires to the Raspberry Pi Pico like 
 |Female connector|   |Raspberry Pi Pico|
 |:--------------:|:-:|:---------------:|
 |Pin 1 (3.3V)    |-> |3.3V pin         |
-|Pin 2 (SCL)     |-> |GP7 pin          |
-|Pin 5 (SDA)     |-> |GP6 pin          |
+|Pin 2 (SCL)     |-> |7 (GP4) pin      |
+|Pin 5 (SDA)     |-> |6 (GP5) pin      |
 |Pin 6 (ground)  |-> |Any GND pin      |
 
 ![female connector](nunchuck_port.png)
