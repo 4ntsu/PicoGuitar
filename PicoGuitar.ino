@@ -8,17 +8,13 @@ PicoGamepad gamepad;
 const int ANALOG_MIN = -32767;
 const int ANALOG_MAX = 32767;
 
-// min/max whammy values as returned by WiiChuck, adjust as needed
-const int WHAMMY_MIN = 16;
-const int WHAMMY_MAX = 29;
-
 // min/max X/Y joystick axis values as returned by WiiChuck, adjust as needed
 const int STICK_X_MIN = 5;
 const int STICK_X_MAX = 62;
 const int STICK_Y_MIN = 5;
 const int STICK_Y_MAX = 62;
 
-void setup() {  
+void setup() {
 
   guitar.begin();
   guitar.type = GuitarHeroController;
@@ -26,21 +22,23 @@ void setup() {
 }
 
 void loop() {
-  
+
   guitar.readData(); // read inputs from guitar
 
-  gamepad.SetZ(map(guitar.getWhammyBar(), WHAMMY_MIN, WHAMMY_MAX, 0, ANALOG_MAX));            // whammy
-  gamepad.SetButton(1, guitar.getGreenButton());                                              // green
-  gamepad.SetButton(2, guitar.getRedButton());                                                // red
-  gamepad.SetButton(0, guitar.getYellowButton());                                             // yellow
-  gamepad.SetButton(3, guitar.getBlueButton());                                               // blue
-  gamepad.SetButton(4, guitar.getOrangeButton());                                             // orange
-  gamepad.SetRz(guitar.getStrumUp()?ANALOG_MIN:(guitar.getStrumDown()?ANALOG_MAX:0));         // strum
-  gamepad.SetX(map(guitar.getStickXGuitar(),STICK_X_MIN,STICK_X_MAX,ANALOG_MIN,ANALOG_MAX));  // joystick X axis
-  gamepad.SetY(map(guitar.getStickYGuitar(),STICK_Y_MIN,STICK_Y_MAX,ANALOG_MAX,ANALOG_MIN));  // joystick Y axis
-  gamepad.SetButton(8, guitar.getMinusButtonGuitar());                                        // star power
-  gamepad.SetButton(9, guitar.getPlusButtonGuitar());                                         // plus buttons
-  
+  gamepad.SetZ(map(guitar.values[0], 0, 255, ANALOG_MIN, ANALOG_MAX));  // whammy
+  gamepad.SetButton(1, guitar.values[10]);                              // green
+  gamepad.SetButton(2, guitar.values[11]);                              // red
+  gamepad.SetButton(0, guitar.values[12]);                              // yellow
+  gamepad.SetButton(3, guitar.values[13]);                              // blue
+  gamepad.SetButton(4, guitar.values[14]);                              // orange
+  gamepad.SetButton(5, guitar.values[9]);                               // pedal
+  gamepad.SetRz(map(guitar.values[7], 0, 255, ANALOG_MIN, ANALOG_MAX)); // strum
+//gamepad.SetRx(map(guitar.values[3], 0, 255, ANALOG_MIN, ANALOG_MAX)); // neck slider - WIP, not yet supported by WiiChuck
+  gamepad.SetX(map(guitar.values[1],0,255,ANALOG_MIN,ANALOG_MAX));      // joystick X axis
+  gamepad.SetY(map(guitar.values[2],0,255,ANALOG_MIN,ANALOG_MAX));      // joystick Y axis
+  gamepad.SetButton(8, guitar.values[5]);                               // star power
+  gamepad.SetButton(9, guitar.values[6]);                               // plus buttons
+
   gamepad.send_update(); // send inputs to USB gamepad
 
 }
