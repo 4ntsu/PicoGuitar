@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> This project was a fun learning experiment, but if you intend on building yourself a usable guitar adapter with a Pi Pico (or any other microcontroller), consider using [Santroller](https://santroller.com/) instead. It's a much more polished piece of software with great documentation.  
+
+---
+
 # PicoGuitar
 Small project to interface a Wii Guitar Hero controller to a PC using a Raspberry Pi Pico.
 
@@ -34,11 +39,11 @@ Having the wires mapped, solder/connect the wires to the Raspberry Pi Pico like 
 _[image source](https://en.wikipedia.org/wiki/File:Conectores_nunchuk_wiimote.png) - CC BY-SA 3.0_
 
 ## Software
-- Install Arduino IDE
-- Tools > Board > Board Manager > Install support for the RPi Pico: "Arduino Mbed OS RP2040 Boards"
-- Tools > Manage Libraries > Install the library "WiiChuck"
-- Go to https://gitlab.com/realrobots/PicoGamepad and download the entire repo as a zip file (button to the left of "Clone")
-- Sketch > Include Library > Add .ZIP Library > Select the file downloaded in the previous step
+- Install Arduino IDE.
+- Tools > Board > Board Manager > Install support for the RPi Pico: "Arduino Mbed OS RP2040 Boards".
+- Tools > Manage Libraries > Install the library "WiiChuck". For pedal support (RJ11 jack) make sure you are using at least version 0.3.3 of the library. Neck slider support on World Tour guitars will be implemented in future versions of both the library and this program.
+- Go to https://gitlab.com/realrobots/PicoGamepad and download the entire repo as a zip file (button to the left of "Clone").
+- Sketch > Include Library > Add .ZIP Library > Select the file downloaded in the previous step.
 - Write the sketch included in this repo to the RPi Pico.
 
 ## Comments
